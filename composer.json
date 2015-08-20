@@ -1,0 +1,22 @@
+{
+    "name": "samanthajayasinghe/merchant-report",
+    "type": "application",
+    "description": "Example Report ",
+    "keywords": ["report"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Samantha Jayasinghe",
+            "email": "isamantha@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.1"
+    },
+    "autoload": {
+        "files": ["config.php","di.php"],
+        "psr-0": {
+            "": "src/"
+        }
+    }
+}
