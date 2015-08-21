@@ -1,7 +1,23 @@
 <?php
 namespace Library\Mapper;
 
+use GuzzleHttp\Client;
+
 class HttpBaseMapper extends BaseMapper{
+
+    /**
+     * @var Client
+     */
+    private $httpClient = null;
+
+    /**
+     * @param Client $httpClient
+     */
+    public function __construct(Client $httpClient)
+    {
+        $this->setHttpClient($httpClient);
+    }
+
     /**
      * @param string $query
      * @param array $parameters
@@ -9,7 +25,7 @@ class HttpBaseMapper extends BaseMapper{
      */
     protected function query($query, array $parameters)
     {
-        // TODO: Implement query() method.
+        $this->getHttpClient()->get($query, $parameters);
     }
 
     /**
@@ -21,5 +37,21 @@ class HttpBaseMapper extends BaseMapper{
         // TODO: Implement prepareQuery() method.
     }
 
+    /**
+     * @return Client
+     */
+    public function getHttpClient()
+    {
+        return $this->httpClient;
+    }
 
+    /**
+     * @param Client $httpClient
+     * @return $this
+     */
+    private function setHttpClient($httpClient)
+    {
+        $this->httpClient = $httpClient;
+        return $this;
+    }
 } 
