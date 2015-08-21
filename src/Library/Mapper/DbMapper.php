@@ -1,7 +1,22 @@
 <?php
 namespace Library\Mapper;
 
-class DbMapper extends BaseMapper{
+use \PDO;
+
+class DbMapper extends BaseMapper
+{
+    /**
+     * @param PDO $dbHandler
+     */
+    public function __construct(PDO $dbHandler)
+    {
+        $this->setDbHandler($dbHandler);
+    }
+    /**
+     * @var PDO
+     */
+    private $dbHandler = null;
+
     /**
      * @param string $query
      * @param array $parameters
@@ -21,5 +36,22 @@ class DbMapper extends BaseMapper{
         // TODO: Implement prepareQuery() method.
     }
 
+    /**
+     * @return PDO
+     */
+    public function getDbHandler()
+    {
+        return $this->dbHandler;
+    }
+
+    /**
+     * @param PDO $dbHandler
+     * @return $this
+     */
+    private function setDbHandler(PDO $dbHandler)
+    {
+        $this->dbHandler = $dbHandler;
+        return $this;
+    }
 
 } 
