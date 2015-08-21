@@ -24,7 +24,8 @@ class DbMapper extends BaseMapper
      */
     protected function query($query, array $parameters)
     {
-        // TODO: Implement query() method.
+        $statement = $this->getDbHandler()->prepare($query, $parameters);
+        return $this->getDbHandler()->query($statement);
     }
 
     /**
@@ -33,7 +34,7 @@ class DbMapper extends BaseMapper
      */
     protected function prepareQuery(array $parameters)
     {
-        // TODO: Implement prepareQuery() method.
+        return $parameters;
     }
 
     /**

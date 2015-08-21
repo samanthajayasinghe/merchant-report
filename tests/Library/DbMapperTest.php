@@ -12,8 +12,15 @@ class DbMapperTest extends PHPUnit_Framework_TestCase
         $this->dbMapper = new DbMapper(new PDO('sqlite:data/tests.db'));
     }
 
-    public function testAbc()
+    public function testDbHandler()
     {
-        $this->assertTrue(true);
+        $result = $this->dbMapper->getDbHandler();
+        $this->assertInstanceOf('PDO',$result);
+    }
+
+    public function testExecute()
+    {
+        $result = $this->dbMapper->load('SELECT * FROM merchant',[]);
+
     }
 } 

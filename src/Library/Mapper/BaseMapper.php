@@ -8,9 +8,9 @@ abstract class BaseMapper
      * @param array $parameters
      * @return mixed
      */
-    public function execute($query, array $parameters){
+    public function load($query, array $parameters){
         return $this->query(
-            $this->prepareQuery($parameters),
+            $query,
             $parameters
         );
     }
