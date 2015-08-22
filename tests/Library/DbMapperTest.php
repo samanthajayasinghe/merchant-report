@@ -9,7 +9,10 @@ class DbMapperTest extends PHPUnit_Framework_TestCase
 
     protected  function setup()
     {
-        $this->dbMapper = new DbMapper(new PDO('sqlite:data/tests.db'));
+        $db = new PDO('sqlite:data/test.db');
+        $db->setAttribute(PDO::ATTR_ERRMODE,
+            PDO::ERRMODE_EXCEPTION);
+        $this->dbMapper = new DbMapper($db);
     }
 
     public function testDbHandler()
@@ -21,6 +24,13 @@ class DbMapperTest extends PHPUnit_Framework_TestCase
     public function testExecute()
     {
         $result = $this->dbMapper->load('SELECT * FROM merchant',[]);
-
+        $this->assertCount(3,$result);
     }
+
+    public function testExecuteWithParameters()
+    {
+        $result = $this->dbMapper->load('SELECT * FROM merchant WHERE id>:id',[1]);
+        $this->assertCount(2,$result);
+    }
+
 } 

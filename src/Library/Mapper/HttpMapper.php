@@ -3,7 +3,7 @@ namespace Library\Mapper;
 
 use GuzzleHttp\Client;
 
-class HttpBaseMapper extends BaseMapper{
+class HttpMapper extends BaseMapper{
 
     /**
      * @var Client
@@ -25,7 +25,7 @@ class HttpBaseMapper extends BaseMapper{
      */
     protected function query($query, array $parameters)
     {
-        $this->getHttpClient()->get($query, $parameters);
+        return $this->getHttpClient()->get($query, $parameters);
     }
 
     /**
