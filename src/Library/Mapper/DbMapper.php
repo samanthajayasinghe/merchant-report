@@ -30,12 +30,11 @@ class DbMapper extends BaseMapper
     }
 
     /**
-     * @param array $parameters
-     * @return string
+     * @param array $result
+     * @return array
      */
-    protected function prepareQuery(array $parameters)
-    {
-        return $parameters;
+    protected function formatResult($result){
+        return $result;
     }
 
     /**

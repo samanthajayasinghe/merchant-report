@@ -3,7 +3,8 @@ namespace Library\Mapper;
 
 use GuzzleHttp\Client;
 
-class HttpMapper extends BaseMapper{
+class HttpMapper extends BaseMapper
+{
 
     /**
      * @var Client
@@ -25,16 +26,17 @@ class HttpMapper extends BaseMapper{
      */
     protected function query($query, array $parameters)
     {
-        return $this->getHttpClient()->get($query, $parameters);
+        $response = $this->getHttpClient()->get($query, ['query'=>$parameters]);
+        return $response->getBody()->getContents();
     }
 
     /**
-     * @param array $parameters
-     * @return string
+     * @param array $result
+     * @return array
      */
-    protected function prepareQuery(array $parameters)
+    protected function formatResult($result)
     {
-        // TODO: Implement prepareQuery() method.
+        return json_decode($result, true);
     }
 
     /**

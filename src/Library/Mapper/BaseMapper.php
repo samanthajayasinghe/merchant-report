@@ -9,9 +9,8 @@ abstract class BaseMapper
      * @return mixed
      */
     public function load($query, array $parameters){
-        return $this->query(
-            $query,
-            $parameters
+        return $this->formatResult(
+            $this->query($query, $parameters)
         );
     }
 
@@ -23,9 +22,9 @@ abstract class BaseMapper
     abstract protected function query($query, array $parameters);
 
     /**
-     * @param array $parameters
-     * @return string
+     * @param array $result
+     * @return mixed
      */
-    abstract protected function prepareQuery(array $parameters);
+    abstract protected function formatResult($result);
 
 } 
