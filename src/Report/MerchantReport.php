@@ -31,19 +31,20 @@ class MerchantReport
     public function getTransactions(array $filters)
     {
         $result = [];
-        $rates = $this->getCurrencyMapper()->loadCurrency();
         $transactions = $this->getTransactionMapper()->loadTransaction($filters);
 
         if (count($transactions) == 0) {
             throw new NotFoundException("No Records found");
         }
+        $rates = $this->getCurrencyMapper()->loadCurrency();
+
         foreach ($transactions as $transaction) {
             $gbpAmount = $transaction['amount'] * $rates[$transaction['symbol']];
             $result[] = [
                 $transaction['id'],
                 $transaction['name'],
                 $transaction['date'],
-                $gbpAmount
+                round($gbpAmount,2)
             ];
         }
         return $result;
