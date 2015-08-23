@@ -1,8 +1,9 @@
 # merchant report
 
 ### How to Install
+ ````bash
  Update Composer
-
+````
 ### How to Generate Report
  ````php
  php report.php {merchantId} eg: php report.php 1
