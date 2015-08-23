@@ -2,7 +2,9 @@
 
 use Report\Mapper\CurrencyMapper;
 use GuzzleHttp\Client;
-class CurrencyMapperTest extends PHPUnit_Framework_TestCase{
+
+class CurrencyMapperTest extends PHPUnit_Framework_TestCase
+{
 
     /**
      * @var CurrencyMapper
@@ -11,11 +13,12 @@ class CurrencyMapperTest extends PHPUnit_Framework_TestCase{
 
     private $apiUrl = 'https://openexchangerates.org/api/latest.json';
 
-    private $apiParam = ['app_id'=>'6c3aa6502c374978996b0642547f879b'];
+    private $apiParam = ['app_id' => '6c3aa6502c374978996b0642547f879b'];
 
-    private $apiExpectedResult = ['rates'=>['USD'=>1.01,'GBP'=>1.23]];
+    private $apiExpectedResult = ['rates' => ['USD' => 1.01, 'GBP' => 1.23]];
 
-    protected function setup(){
+    protected function setup()
+    {
         $this->currencyMapper = new CurrencyMapper(
             $this->getHttpClientStub(),
             $this->apiUrl,
@@ -25,8 +28,8 @@ class CurrencyMapperTest extends PHPUnit_Framework_TestCase{
 
     public function testLoadCurrency()
     {
-       $result = $this->currencyMapper->loadCurrency() ;
-       $this->assertEquals($this->apiExpectedResult['rates'], $result);
+        $result = $this->currencyMapper->loadCurrency();
+        $this->assertEquals($this->apiExpectedResult['rates'], $result);
     }
 
     /**

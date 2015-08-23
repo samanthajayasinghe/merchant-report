@@ -3,7 +3,8 @@ namespace Library\Exception;
 
 use \Exception;
 
-class NotFoundException extends Exception{
+class NotFoundException extends Exception
+{
 
     protected $code = 404;
 

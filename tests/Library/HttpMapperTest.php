@@ -10,7 +10,8 @@ class HttpMapperTest extends PHPUnit_Framework_TestCase
      */
     private $httpMapper = null;
 
-    protected function setup(){
+    protected function setup()
+    {
         $this->httpMapper = new HttpMapper($this->getHttpClientStub());
     }
 

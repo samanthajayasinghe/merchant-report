@@ -10,26 +10,26 @@ use Report\Mapper\TransactionMapper;
 
 $container = new Container($config);
 
-$container['pdo'] = function($config) {
+$container['pdo'] = function ($config) {
     $db = new PDO($config['db']['dsn']);
     $db->setAttribute(PDO::ATTR_ERRMODE,
         PDO::ERRMODE_EXCEPTION);
     return $db;
 };
 
-$container['httpClient'] = function($config) {
+$container['httpClient'] = function ($config) {
     return new Client();
 };
 
-$container['transactionMapper'] = function($config) {
+$container['transactionMapper'] = function ($config) {
     return new TransactionMapper($config['pdo']);
 };
 
-$container['currencyMapper'] = function($config) {
+$container['currencyMapper'] = function ($config) {
     return new CurrencyMapper(
         $config['httpClient'],
         $config['currencyAPI']['url'],
-        ['app_id'=>$config['currencyAPI']['appId']]
+        ['app_id' => $config['currencyAPI']['appId']]
     );
 };
 

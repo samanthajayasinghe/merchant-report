@@ -8,7 +8,8 @@ abstract class BaseMapper
      * @param array $parameters
      * @return mixed
      */
-    public function load($query, array $parameters){
+    public function load($query, array $parameters)
+    {
         return $this->formatResult(
             $this->query($query, $parameters)
         );

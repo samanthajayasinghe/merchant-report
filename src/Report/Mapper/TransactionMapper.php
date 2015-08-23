@@ -3,7 +3,8 @@ namespace Report\Mapper;
 
 use Library\Mapper\DbMapper;
 
-class TransactionMapper extends DbMapper {
+class TransactionMapper extends DbMapper
+{
 
     /**
      * @param array $filters

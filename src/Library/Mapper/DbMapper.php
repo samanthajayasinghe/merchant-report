@@ -12,6 +12,7 @@ class DbMapper extends BaseMapper
     {
         $this->setDbHandler($dbHandler);
     }
+
     /**
      * @var PDO
      */
@@ -33,7 +34,8 @@ class DbMapper extends BaseMapper
      * @param array $result
      * @return array
      */
-    protected function formatResult($result){
+    protected function formatResult($result)
+    {
         return $result;
     }
 

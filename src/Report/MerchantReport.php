@@ -7,7 +7,8 @@ use Report\Mapper\TransactionMapper;
 use Library\Exception\NotFoundException;
 use Pimple\Container;
 
-class MerchantReport {
+class MerchantReport
+{
 
     /**
      * @var Container
@@ -17,10 +18,11 @@ class MerchantReport {
     /**
      * @param Container $container
      */
-    public  function __construct(Container $container)
+    public function __construct(Container $container)
     {
         $this->setContainer($container);
     }
+
     /**
      * @param array $filters
      * @return array
@@ -32,12 +34,11 @@ class MerchantReport {
         $rates = $this->getCurrencyMapper()->loadCurrency();
         $transactions = $this->getTransactionMapper()->loadTransaction($filters);
 
-        if(count($transactions) == 0){
+        if (count($transactions) == 0) {
             throw new NotFoundException("No Records found");
         }
-        foreach($transactions as $transaction)
-        {
-            $gbpAmount = $transaction['amount']*$rates[$transaction['symbol']];
+        foreach ($transactions as $transaction) {
+            $gbpAmount = $transaction['amount'] * $rates[$transaction['symbol']];
             $result[] = [
                 $transaction['id'],
                 $transaction['name'],

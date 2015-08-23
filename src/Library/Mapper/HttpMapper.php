@@ -26,7 +26,7 @@ class HttpMapper extends BaseMapper
      */
     protected function query($query, array $parameters)
     {
-        $response = $this->getHttpClient()->get($query, ['query'=>$parameters]);
+        $response = $this->getHttpClient()->get($query, ['query' => $parameters]);
         return $response->getBody()->getContents();
     }
 

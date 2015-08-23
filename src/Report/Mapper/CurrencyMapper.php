@@ -47,7 +47,7 @@ class CurrencyMapper extends HttpMapper
     protected function formatResult($result)
     {
         $result = parent::formatResult($result);
-        if(!isset($result['rates'])){
+        if (!isset($result['rates'])) {
             throw new NotFoundException('Rates Not Found');
         }
         return $result['rates'];

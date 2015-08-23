@@ -2,14 +2,15 @@
 
 use Report\Mapper\TransactionMapper;
 
-class TransactionMapperTest extends PHPUnit_Framework_TestCase{
+class TransactionMapperTest extends PHPUnit_Framework_TestCase
+{
 
     /**
      * @var TransactionMapper
      */
     private $transactionMapper = null;
 
-    protected  function setup()
+    protected function setup()
     {
         $db = new PDO('sqlite:data/test.db');
         $db->setAttribute(PDO::ATTR_ERRMODE,
@@ -19,13 +20,13 @@ class TransactionMapperTest extends PHPUnit_Framework_TestCase{
 
     public function testLoadTransaction()
     {
-        $result = $this->transactionMapper->loadTransaction(['id'=>1]);
-        $this->assertCount(3,$result);
+        $result = $this->transactionMapper->loadTransaction(['id' => 1]);
+        $this->assertCount(3, $result);
     }
 
     public function testLoadTransactionForNonExistingMerchant()
     {
-        $result = $this->transactionMapper->loadTransaction(['id'=>4]);
-        $this->assertCount(0,$result);
+        $result = $this->transactionMapper->loadTransaction(['id' => 4]);
+        $this->assertCount(0, $result);
     }
 } 
