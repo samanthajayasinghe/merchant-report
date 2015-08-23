@@ -12,10 +12,10 @@
     ],
     "require": {
         "php": ">=5.2.1",
-        "guzzlehttp/guzzle": "6"
+        "guzzlehttp/guzzle": "6",
+        "pimple/pimple": "~3.0"
     },
     "autoload": {
-        "files": ["config.php","di.php"],
         "psr-0": {
             "": "src/"
         }
